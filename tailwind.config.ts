@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-	darkMode: ["class"],
+	darkMode: ["class"], // Maintained as per existing config, PRD does not specify to remove or change.
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -10,7 +10,7 @@ export default {
 	],
 	prefix: "",
 	theme: {
-		container: {
+		container: { // Maintained as per existing config.
 			center: true,
 			padding: '2rem',
 			screens: {
@@ -18,7 +18,7 @@ export default {
 			}
 		},
 		extend: {
-			colors: {
+			colors: { // All color definitions now point to CSS variables updated from PRD.
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -63,12 +63,15 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
-			borderRadius: {
+			borderRadius: { // Maintained as per existing config, aligns with PRD's use of 'rounded-md' via CSS var logic.
 				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
+				md: 'calc(var(--radius) - 2px)', // This effectively becomes PRD's 'rounded-md' (0.375rem if --radius is 0.5rem)
 				sm: 'calc(var(--radius) - 4px)'
 			},
-			keyframes: {
+      fontFamily: {
+        sans: ["Helvetica", "Arial", "sans-serif"], // Added based on PRD typography.primaryFont
+      },
+			keyframes: { // Maintained as per existing config.
 				'accordion-down': {
 					from: {
 						height: '0'
@@ -86,11 +89,11 @@ export default {
 					}
 				}
 			},
-			animation: {
+			animation: { // Maintained as per existing config.
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate")], // Maintained as per existing config.
 } satisfies Config;
